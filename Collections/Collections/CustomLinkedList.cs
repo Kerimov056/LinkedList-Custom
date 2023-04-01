@@ -71,69 +71,6 @@ public class CustomLinkedList<T> : IEnumerable<T>
         return default;
     }
 
-
-    public CustomLinkedNodes<T> AddAfter(CustomLinkedNodes<T>  after, T value)
-    {
-        CustomLinkedNodes<T> newNode = new(value);
-        var node=Find(after.Value);
-        if (node!=null)
-        {
-            var next = node.Next;
-            next.Previous = newNode;
-            node.Next = newNode;
-            newNode.Previous = node;
-            newNode.Next = next;
-            return newNode;
-        }
-        return default;
-    }
-
-    public CustomLinkedNodes<T> AddBefore(CustomLinkedNodes<T> before, T value)
-    {
-        if (before == null)
-        {
-            throw new ArgumentNullException(nameof(before));
-        }
-
-        CustomLinkedNodes<T> newNode = new CustomLinkedNodes<T>(value);
-        CustomLinkedNodes<T> node = Find(before.Value);
-
-        if (node != null)
-        {
-            CustomLinkedNodes<T>? previous = node.Previous;
-            if (previous == null)
-            {
-                First = newNode;
-            }
-            else
-            {
-                previous.Next = newNode;
-            }
-            newNode.Previous = previous;
-            newNode.Next = node;
-            node.Previous = newNode;
-
-            Count++;
-            return newNode;
-        }
-
-        return default;
-    }
-
-
-
-    public void Clear()
-    {
-
-        Count = 0;
-        First.Previous = default;    //yarimciq qalib hele
-        First.Next = default;
-        Last.Previous=default;
-        Last.Next = default;
-        
-    }
-
-    
     public IEnumerator<T> GetEnumerator()
     {
         CustomLinkedNodes<T>? temp = First;

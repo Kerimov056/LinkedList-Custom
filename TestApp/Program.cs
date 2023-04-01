@@ -25,7 +25,7 @@ Mylist.AddFirst(1);
 Mylist.AddFirst(2);
 Mylist.AddFirst(3);
 var nodes = Mylist.AddFirst(4);
-Mylist.AddBefore(nodes, 5);
+//Mylist.AddBefore(nodes, 5);
 foreach (var item in Mylist)
 {
     Console.WriteLine(item);

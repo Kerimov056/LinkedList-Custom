@@ -6,7 +6,7 @@ list.AddFirst(1);
 list.AddFirst(2);
 list.AddFirst(3);
 
-Console.WriteLine(list.Contains(5));
+Console.WriteLine(list.Average());
 foreach (var item in list)
 {
     Console.WriteLine(item);
@@ -16,8 +16,6 @@ foreach (var item in list)
 Console.WriteLine("**************************");
 Console.WriteLine("*********(MyList)*********");
 Console.WriteLine("**************************");
-
-
 
 
 CustomLinkedList<int> Mylist = new CustomLinkedList<int>();

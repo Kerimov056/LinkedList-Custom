@@ -189,6 +189,32 @@ public class CustomLinkedList<T> : IEnumerable<T>
         return false;
     }
 
+
+    public void Average()
+    {
+        if (First is null)
+        {
+            Console.WriteLine("Empty in list");
+            return;
+        }
+        int count = 0;
+        var sum = 0.0;
+        var node = First;
+        while (node != null)
+        {
+           // sum += node.Value;
+            count++;
+            node = node.Next;
+        }
+        if (count==0)
+        {
+            Console.WriteLine("Empty in list");
+            return;
+        }
+        Console.WriteLine(sum / count);
+    }
+
+
     public IEnumerator<T> GetEnumerator()
     {
         CustomLinkedNodes<T>? temp = First;

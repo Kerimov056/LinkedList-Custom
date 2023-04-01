@@ -175,6 +175,20 @@ public class CustomLinkedList<T> : IEnumerable<T>
         Count = 0;
     }
 
+    public bool Contains(T value)
+    {
+        var node = First;
+        while (node != null)
+        {
+            if (node.Value.Equals(value))
+            {
+                return true;
+            }
+            node = node.Next;
+        }
+        return false;
+    }
+
     public IEnumerator<T> GetEnumerator()
     {
         CustomLinkedNodes<T>? temp = First;

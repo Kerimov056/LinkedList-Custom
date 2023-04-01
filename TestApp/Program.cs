@@ -5,8 +5,7 @@ LinkedList<int> list = new LinkedList<int>();
 list.AddFirst(1);
 list.AddFirst(2);
 list.AddFirst(3);
-var node = list.AddFirst(4);
-list.AddBefore(node, 5);
+list.Find(2);
 foreach (var item in list)
 {
     Console.WriteLine(item);
@@ -25,6 +24,8 @@ Mylist.AddFirst(1);
 Mylist.AddFirst(2);
 Mylist.AddFirst(3);
 var nodes = Mylist.AddFirst(4);
+Mylist.AddBefore(nodes, 5);
+
 //Mylist.AddBefore(nodes, 5);
 foreach (var item in Mylist)
 {

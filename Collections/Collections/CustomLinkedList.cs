@@ -168,6 +168,12 @@ public class CustomLinkedList<T> : IEnumerable<T>
 
     }
 
+    public void Clear()
+    {
+        First = default;
+        Last = default;
+        Count = 0;
+    }
 
     public IEnumerator<T> GetEnumerator()
     {

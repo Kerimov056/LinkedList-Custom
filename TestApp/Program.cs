@@ -6,7 +6,7 @@ list.AddFirst(1);
 list.AddFirst(2);
 list.AddFirst(3);
 
-list.Remove(3);
+list.Clear();
 foreach (var item in list)
 {
     Console.WriteLine(item);
@@ -25,7 +25,7 @@ Mylist.AddFirst(1);
 Mylist.AddFirst(2);
 Mylist.AddFirst(3);
 
-Mylist.Remove(3);
+Mylist.Clear();
 foreach (var item in Mylist)
 {
     Console.WriteLine(item);

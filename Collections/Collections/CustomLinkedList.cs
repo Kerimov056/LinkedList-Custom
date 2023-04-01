@@ -104,47 +104,84 @@ public class CustomLinkedList<T> : IEnumerable<T>
 
 
     public CustomLinkedNodes<T> AddBefore(CustomLinkedNodes<T> before, T value)
-{
-    if (before is null)
     {
-        throw new ArgumentNullException(nameof(before));
-    }
-    CustomLinkedNodes<T> newNode = new CustomLinkedNodes<T>(value);
-    CustomLinkedNodes<T> node = Find(before.Value);
-    if (node != null)
-    {
-        CustomLinkedNodes<T> previous = node.Previous;
-        if (previous is null)
+        if (before is null)
         {
-            First = newNode;
+            throw new ArgumentNullException(nameof(before));
         }
-        else
+        CustomLinkedNodes<T> newNode = new CustomLinkedNodes<T>(value);
+        CustomLinkedNodes<T> node = Find(before.Value);
+        if (node != null)
         {
-            previous.Next = newNode;
-        }
-        newNode.Previous = previous;
-        newNode.Next = node;
-        node.Previous = newNode;
+            CustomLinkedNodes<T> previous = node.Previous;
+            if (previous is null)
+            {
+                First = newNode;
+            }
+            else
+            {
+                previous.Next = newNode;
+            }
+            newNode.Previous = previous;
+            newNode.Next = node;
+            node.Previous = newNode;
 
-        Count++;
+            Count--;
+            return newNode;
+        }
         return newNode;
     }
-    return newNode;
-}
 
-public IEnumerator<T> GetEnumerator()
-{
-    CustomLinkedNodes<T>? temp = First;
-    while (temp != null)
+    public bool Remove(T value)
     {
-        yield return temp.Value;
-        temp = temp.Next;
-    }
-}
+        var Node = First;
 
-IEnumerator IEnumerable.GetEnumerator()
-{
-    return GetEnumerator();
-}
+
+        while (Node != null)
+        {
+            if (Node.Value.Equals(value))
+            {
+                if (Node.Previous != null)
+                {
+                    Node.Next.Previous = Node.Next;
+                }
+                else
+                {
+                    First = Node.Next;
+                }
+
+                if (Node.Next !=null)
+                {
+                    Node.Next.Previous = Node.Previous;
+                }
+                else
+                {
+                    Last = Node.Previous;
+                }
+                Count--;
+                return true;
+            }
+
+            Node = Node.Next;
+        }
+        return false;
+
+    }
+
+
+    public IEnumerator<T> GetEnumerator()
+    {
+        CustomLinkedNodes<T>? temp = First;
+        while (temp != null)
+        {
+            yield return temp.Value;
+            temp = temp.Next;
+        }
+    }
+
+    IEnumerator IEnumerable.GetEnumerator()
+    {
+        return GetEnumerator();
+    }
 }
 
